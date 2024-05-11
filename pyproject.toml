@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "health-portal-project"
+version = "0.1.0"
+description = "Healthcare portal for patients, doctors and admins"
+authors = ["Vineetha <vineethamanojjude@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^4.2.5"
+django-crispy-forms = "^2.0"
+black = "^23.9.1"
+djlint = "^1.34.0"
+crispy-bootstrap4 = "^2022.1"
+isort = "^5.12.0"
+textblob = "^0.17.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

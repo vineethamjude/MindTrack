@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="card">
+            <h2>
+                {% if request.GET.next == "/doctor/" %}
+                    Doctor Login
+                {% elif request.GET.next == "/patient/" %}
+                    Patient Login
+                {% else %}
+                    Login
+                {% endif %}
+            </h2>
+            <form method="post">
+                {% csrf_token %}
+                <label for="username">Username</label>
+                <input type="text"
+                       id="username"
+                       name="username"
+                       placeholder="Enter your username">
+                <label for="password">Password</label>
+                <input type="password"
+                       id="password"
+                       name="password"
+                       placeholder="Enter your password">
+            </br>
+            <button type="submit">Login</button>
+        </form>
+        {% if request.GET.next == "/patient/" %}
+        </br>
+        <form action="{% url 'register' %}" method="get">
+            <button type="submit" class="register">Register</button>
+        </form>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

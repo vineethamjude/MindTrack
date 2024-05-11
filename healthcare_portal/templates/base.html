@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Healthcare Portal</title>
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'portal/styles.css' %}">
+    </head>
+    <body class="{% block page_class %}{% endblock %}">
+        <div>
+            <h1>MindTrack</h1>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

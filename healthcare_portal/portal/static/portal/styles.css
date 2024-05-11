@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima&family=Poppins&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #70c1ff, #498ffc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.doctor-page {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #cd64a1, #cb2b88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 1000px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h1,
+h2,
+h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h4 {
+  color: #000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+button {
+  padding: 10px;
+  background-color: #fff;
+  color: #498ffc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #70c1ff;
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+  th,
+  td {
+    font-size: 12px; /* Smaller font size for mobile */
+    padding: 5px; /* Smaller padding for mobile */
+  }
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Eliminate spaces between borders */
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left; /* Align text to the left */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8); /* Add a subtle border */
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.5); /* Slight background to header */
+  color: #000; /* Text color for header */
+  font-weight: bold;
+}
+
+td {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Light background for data cells */
+  color: #000; /* Text color for data cells */
+}
+
+/* Hover effect for table rows */
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.collapsible {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.expanded .arrow {
+  transform: rotate(135deg);
+}

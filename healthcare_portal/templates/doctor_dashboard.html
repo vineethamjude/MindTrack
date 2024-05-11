@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block page_class %}doctor-page{% endblock %}
+{% block content %}
+    <div class="card">
+        <h2>Welcome Doctor {{ request.user.first_name }}</h2>
+        <br />
+        {% if appointments %}
+            <h3>Patients Booked with you</h3>
+            <ol>
+                {% for appointment in appointments %}
+                    <li>
+                        <button class="collapsible">
+                            <h2>
+                                {{ appointment.patient.first_name }} <span class="arrow"></span>
+                            </h2>
+                        </button>
+                        <div class="content" style="display: none;">
+                            <table border="1">
+                                <thead>
+                                    <tr>
+                                        <th>Question</th>
+                                        <th>Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for answer in appointment.associated_answers.all %}
+                                        <tr>
+                                            <td>{{ answer.question }}</td>
+                                            <td>{{ answer.answer }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <br>
+                            <form action="{% url 'complete_appointment' appointment.id %}"
+                                  method="post">
+                                {% csrf_token %}
+                                <button type="submit">Complete {{ appointment.patient.first_name }}'s Appointment</button>
+                            </form>
+                            <br>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <h3>You have no booked appointments.</h3>
+        {% endif %}
+        <br>
+        <h4>
+            Your current set availability:
+            {% if request.user.availability is True %}
+                Available
+            {% else %}
+                Unavailable
+            {% endif %}
+        </h4>
+        <!-- Availability Form -->
+        <form action="{% url 'set_availability' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Switch Availability</button>
+        </form>
+        <br>
+        <!-- Logout Button -->
+        <br />
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $(".collapsible").click(function(){
+            $(this).toggleClass('expanded');
+            $(this).next('.content').toggle();
+        });
+    });
+    </script>
+{% endblock %}

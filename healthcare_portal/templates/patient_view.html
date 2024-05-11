@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Hi {{ request.user.first_name }}!</h2>
+  <h3>
+    {% for appointment in associated_appointments %}
+      You have already booked an appointment with Dr. {{ appointment.doctor.first_name }}
+    {% endfor %}
+  </h3>
+  <div class="card">
+    {% if not associated_appointments %}
+      <h2>Kindly fill the below form so that we can assist you further</h2>
+      <form method="post">
+        {% csrf_token %}
+        <!-- Hidden input for the "page_one" boolean value -->
+        <input type="hidden" name="page_one" value="true" />
+        {% for question in questions %}
+          {% if question.text != 'Do you want to consult a doctor? Enter "yes" or "no".' and question.text != 'Calculated Sentiment Average Score (-1 to 1)' %}
+            <label>{{ question.text }}</label>
+            <input align="right" type="text" name="{{ question.id }}" />
+          {% endif %}
+        {% endfor %}
+        <button type="submit">Submit</button>
+      </form>
+      <br />
+      <br />
+    {% endif %}
+    <!-- Logout Button -->
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">Logout</button>
+    </form>
+  </div>
+{% endblock %}
